@@ -38,6 +38,17 @@ def get_event(event):
                 f'display notification "{msg}" with title "OBS"',
             ]
         )
+    elif event == obspython.OBS_FRONTEND_EVENT_RECORDING_STOPPING:
+        msg = "Stopping recording..."
+        print(msg)
+        subprocess.Popen(["osascript", "-e", msg])
+        subprocess.call(
+            [
+                "osascript",
+                "-e",
+                f'display notification "{msg}" with title "OBS"',
+            ]
+        )
     elif event == obspython.OBS_FRONTEND_EVENT_RECORDING_STOPPED:
         stop = datetime.datetime.now()
         now = stop.strftime("%I:%M:%S %p")
